@@ -1,0 +1,34 @@
+import pandas as pd
+import numpy as np 
+import matplotlib.pyplot as plt 
+import random
+import string
+import io
+
+#Input of csv 
+df=pd.read_csv('your csv file.csv',usecols=["Review Text"]).rename(columns={"Review Text": "Review"}).dropna()
+
+#df['Review']=df['Review'].map(lambda x :x.lower()).map(lambda x:x.replace(" ",""))
+
+df['id']=[n for n in np.arange(len(df))]
+df=df.set_index('id')
+
+
+
+
+from nltk.stem import PorterStemmer 
+ps = PorterStemmer() # is it a ps ,you write after every script ,,,Hell NOOO
+def stem_lightly(x):
+  cd=[]
+  for i in x:
+    cd.append(ps.stem(i))
+  return cd
+  
+  
+df['Tokens']=df['Review'].apply(lambda x:tokenizer.tokenize(x))
+x1=df.drop(['Review'],axis=1).copy(deep=True)  
+
+
+#using porter stemmer
+  
+ 
